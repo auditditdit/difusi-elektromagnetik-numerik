@@ -81,5 +81,5 @@ ani = FuncAnimation(
     repeat=True  
 )
 
-plt.title('Difusi Elektromagnetik 2D (Looping)')
+plt.title('Difusi Elektromagnetik 2D (E Field)')
 plt.show()
