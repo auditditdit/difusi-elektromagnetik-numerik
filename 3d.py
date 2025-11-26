@@ -1,3 +1,4 @@
+# 3d py
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -31,7 +32,7 @@ E = np.exp(-(((X-x0)**2 + (Y-y0)**2 + (Z-z0)**2)/(2*sigma0**2)))
 E_new = E.copy()
 
 def step(E):
-    E_new = E.copy()
+    E_new = E.copy() 
     # update interior points
     E_new[1:-1,1:-1,1:-1] = E[1:-1,1:-1,1:-1] + D*dt * (
         (E[2:,1:-1,1:-1] - 2*E[1:-1,1:-1,1:-1] + E[:-2,1:-1,1:-1]) / dx**2 +
