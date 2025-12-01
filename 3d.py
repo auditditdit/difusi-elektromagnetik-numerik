@@ -1,18 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-from mpl_toolkits.mplot3d import Axes3D   # needed for 3D plotting
+from mpl_toolkits.mplot3d import Axes3D
 
-# ------------------------------------------------
 # PARAMETER FISIKA
-# ------------------------------------------------
 mu = 1.0
 sigma = 1.0
 D = 0.005 / (mu * sigma)
 
-# ------------------------------------------------
 # DOMAIN 3D
-# ------------------------------------------------
 L = 1.0
 nx = ny = nz = 64
 dx = L / (nx - 1)
@@ -27,16 +23,12 @@ y = np.linspace(0, L, ny)
 z = np.linspace(0, L, nz)
 X, Y, Z = np.meshgrid(x, y, z, indexing='ij')
 
-# ------------------------------------------------
 # INITIAL CONDITION — Gaussian sphere
-# ------------------------------------------------
 x0 = y0 = z0 = 0.5
 sigma0 = 0.1
 E = np.exp(-(((X-x0)**2 + (Y-y0)**2 + (Z-z0)**2) / (2*sigma0**2)))
 
-# ------------------------------------------------
 # NUMERICAL STEP
-# ------------------------------------------------
 def step(E):
     E_new = E.copy()
     E_new[1:-1,1:-1,1:-1] = E[1:-1,1:-1,1:-1] + D*dt * (
@@ -50,9 +42,7 @@ def step(E):
     E_new[:,:,0] = 0; E_new[:,:,-1]=0
     return E_new
 
-# ------------------------------------------------
 # REAL 3D SURFACE (slice at mid-z)
-# ------------------------------------------------
 z_slice = nz // 2
 E_slice = E[:, :, z_slice]
 
@@ -67,9 +57,7 @@ ax.set_ylabel("y")
 ax.set_zlabel("E")
 ax.set_title("Electromagnetic Diffusion 3D Surface (Mid-Z Slice)")
 
-# ------------------------------------------------
 # ANIMATION
-# ------------------------------------------------
 t = 0.0
 def update(frame):
     global E, t, surf

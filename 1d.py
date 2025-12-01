@@ -3,16 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-# -----------------------------
 # PARAMETER FISIKA
-# -----------------------------
 mu = 1.0
 sigma = 1.0
 D = 1.0 / (mu * sigma)
 
-# -----------------------------
 # DOMAIN
-# -----------------------------
 L = 1.0
 nx = 200
 dx = L / (nx - 1)
@@ -24,9 +20,7 @@ dt = 0.4 * dx**2 / (2 * D)
 # Waktu simulasi
 steps_per_cycle = 500
 
-# -----------------------------
 # INITIAL CONDITION: Gaussian
-# -----------------------------
 x0 = 0.3
 sigma0 = 0.04
 E0 = np.exp(-((x - x0)**2) / (2 * sigma0**2))
@@ -43,9 +37,7 @@ for i in range(steps_per_cycle):
     E = E_new.copy()
     E_history.append(E.copy())
 
-# -----------------------------
 # ANIMASI LOOPING
-# -----------------------------
 fig, ax = plt.subplots()
 line, = ax.plot(x, E0, lw=2)
 ax.set_ylim(-0.1, 1.1)

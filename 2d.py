@@ -40,9 +40,7 @@ def step(E):
     E_new[:,-1] = 0
     return E_new
 
-# -----------------------------------------
 # SIMULASI SEKALI 
-# -----------------------------------------
 E_history = []
 E_now = E.copy()
 t_history = []
@@ -54,9 +52,7 @@ for i in range(steps_per_cycle):
     E_history.append(E_now.copy())
     t_history.append(t)
 
-# -----------------------------------------
 # ANIMASI LOOPING
-# -----------------------------------------
 fig, ax = plt.subplots()
 im = ax.imshow(E_history[0].T, origin='lower', extent=(0,Lx,0,Ly),
                vmin=0, vmax=1, cmap='viridis')
